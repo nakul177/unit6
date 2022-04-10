@@ -23,27 +23,27 @@ export const Home = () =>{
 }
 
 const handleStar = (val) =>{
-    if(val > 4){
+    if(val === 4){
         let d1 = data.filter((el) =>{
-            return el.rating > val
+            return el.rating >= 4 && el.rating <= 5
         })
         setData([...d1])
     }
-    else if(val > 3){
+    else if(val === 3){
         let d1 = data.filter((el) =>{
-            return el.rating < val
+            return el.rating >= 3 && el.rating <4
         })
         setData([...d1])
     }
-    else if(val > 2){
+    else if(val === 2){
         let d1 = data.filter((el) =>{
-            return el.rating < val
+            return el.rating >= 2 && el.rating <3
         })
         setData([...d1])
     } 
-    else if(val > 1){
+    else if(val === 1){
         let d1 = data.filter((el) =>{
-            return el.rating < val
+            return el.rating >=0 && el.rating <=1
         })
         setData([...d1])
     }  
