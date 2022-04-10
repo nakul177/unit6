@@ -1,3 +1,14 @@
 .Button Button{
    margin-left: 20px;
 }
+.starbutton Button {
+   margin-left: 20px;
+}
+.paymentbutton Button {
+   margin-top: 5px;
+   margin-left: 20px;
+}
+.ASE Button {
+   margin-top: 5px;
+   margin-left: 20px;
+}

@@ -21,6 +21,55 @@ export const Home = () =>{
     })
     
 }
+
+const handleStar = (val) =>{
+    if(val > 4){
+        let d1 = data.filter((el) =>{
+            return el.rating > val
+        })
+        setData([...d1])
+    }
+    else if(val > 3){
+        let d1 = data.filter((el) =>{
+            return el.rating < val
+        })
+        setData([...d1])
+    }
+    else if(val > 2){
+        let d1 = data.filter((el) =>{
+            return el.rating < val
+        })
+        setData([...d1])
+    } 
+    else if(val > 1){
+        let d1 = data.filter((el) =>{
+            return el.rating < val
+        })
+        setData([...d1])
+    }  
+    }
+  const handlepayment = (val) =>{
+       let d1 = data.filter((el) =>{
+           return el.payment_method === val
+       })
+       setData([...d1])
+  } 
+
+  const handleADE = () =>{
+      const d1 = 
+    data.sort((a, b) => {
+        if(a.name < b.name) return -1;
+       })
+       setData([...d1])
+  }
+  const handleDESC = () =>{
+    const d1 = 
+  data.sort((a, b) => {
+      if(a.name > b.name) return -1;
+     })
+     setData([...d1])
+}
+
     
     
     return(
@@ -31,10 +80,39 @@ export const Home = () =>{
       <Button colorScheme='blue' onClick={() => setPage((page)=> page+1)}>Next</Button>
       <div> page no :{page}</div>
       </div>
-      <div>
-      <Button colorScheme='blue'>Prev</Button>  
+      <div className="starbutton">
+      <Button colorScheme='blue' onClick={() =>{
+        handleStar(4)   
+      }}>4 star</Button>
+      <Button colorScheme='blue' onClick={() =>{
+        handleStar(3)   
+      }}>3 star</Button>  
+      <Button colorScheme='blue' onClick={() =>{
+        handleStar(2)   
+      }}>2 star</Button>  
+      <Button colorScheme='blue' onClick={() =>{
+        handleStar(1)   
+      }}>1 star</Button>    
       </div>
-      
+      <div className="paymentbutton">
+      <Button colorScheme='blue' onClick={() =>{
+           handlepayment("upi")
+      }}>UPI</Button>
+      <Button colorScheme='blue' onClick={() =>{
+           handlepayment("card")
+      }}>Card</Button>  
+      <Button colorScheme='blue' onClick={() =>{
+           handlepayment("cash")
+      }}>Cash</Button>    
+      </div>
+      <div className="ASE">
+      <Button colorScheme='blue' onClick={() =>{
+          handleADE()
+      }}>Asc</Button>
+      <Button colorScheme='blue' onClick={() =>{
+          handleDESC()
+      }} >Desc</Button>
+      </div>
 
       <Rest data={data} />
        
