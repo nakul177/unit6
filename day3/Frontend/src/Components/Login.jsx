@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { login_err, login_loding, login_success } from "../Redux/Login/action";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Navigate} from "react-router-dom";
 
 export const Login = () => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState(" ");
+  const {token , isAuth} = useSelector((state) => state.sign)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  console.log(isAuth)
+  if(!isAuth){
+    return <Navigate to={"/sign"}/>
+  }
   const handleSubmit = () => {
     const userdata = {
       email,
       password,
     };
-
+ 
+    
+     
     dispatch(login_loding());
     fetch(`https://reqres.in/api/login`, {
       method: "POST",
@@ -26,9 +32,10 @@ export const Login = () => {
         dispatch(login_success(res.token))
       navigate('/get-restaurants')
       })
-      .catch((err) => 
-        dispatch(login_err()));
-
+      .catch((err) => {
+        dispatch(login_err());
+        navigate("/sign")
+      })
   };
 
   return (
