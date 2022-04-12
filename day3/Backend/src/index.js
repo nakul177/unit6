@@ -87,7 +87,9 @@ async (req ,res ,next ) => {
     }}, login )
 
 
- 
+    
+app.use("/user" , userController )
+app.use("/post" , postcontroller)
 
 const port = process.env.PORT
 
