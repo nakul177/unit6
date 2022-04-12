@@ -7,7 +7,7 @@ const intistate = {
     err:false,
 }
 
-const sign_reducer = (store = intistate , {type , payload}) =>{
+ const sign_reducer = (store = intistate , {type , payload}) =>{
      switch (type) {
          case SIGN_SUCCESS:
              return {...store ,

@@ -22,15 +22,16 @@ export const Sign = () => {
     method:"POST",
     body:JSON.stringify(userregdata),
     headers:{"Content-Type":"application/json"}
-  }).then((res) =>{
-    res.json()
-  }).then((res) =>{
+  }).then((res) =>
+    res.json())
+    .then((res) =>{
     dispatch(sign_success(res.token))
-  }).catch((res) =>{
+    alert("Sign Successful")
+    navigate("/login")
+  }).catch((res) =>
     dispatch(sign_err())
-  })
-  alert("Sign Successful")
-  navigate("/login")
+  )
+  
  }
 
   return (
