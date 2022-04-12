@@ -87,11 +87,11 @@ async (req ,res ,next ) => {
     }}, login )
 
 
-    
-app.use("/user" , userController )
-app.use("/post" , postcontroller)
+ 
 
-app.listen(process.env.PORT , async () => {
+const port = process.env.PORT
+
+app.listen(port , async () => {
   try {
     await connect();
     console.log("port 1177");
