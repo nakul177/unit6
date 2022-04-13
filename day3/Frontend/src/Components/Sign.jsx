@@ -23,9 +23,9 @@ export const Sign = () => {
     body:JSON.stringify(userregdata),
     headers:{"Content-Type":"application/json"}
   })
-  // .then((res) =>{
-  //   res.json()
-  // })
+  .then((res) =>{
+    res.json()
+  })
    .then((res) =>{
     dispatch(sign_success(res.token))
     alert("Sign Successful")
