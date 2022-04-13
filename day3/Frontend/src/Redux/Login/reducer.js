@@ -22,8 +22,10 @@ const login_reducer = (store = intistate , {type , payload}) =>{
           case LOGIN_ERR:
               return {
                   ...store ,
-                  loding:false,
-                  err:true
+                   loding:false,
+                   err:true,
+                   isAuth:false,
+                   token:""
               }  
      
          default:

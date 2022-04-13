@@ -5,20 +5,29 @@ import {getdata} from "../Redux/Rest/action"
 import './Rest.css'
 export const Rest = () => {
 
-   const {token ,  isAuth} = useSelector((state) => state.login)
+   const {token , isAuth} = useSelector((state) => state.login)
+   
    const {product} = useSelector((state) => state.rest)
    const dispatch = useDispatch()
- 
-    const DataProduct = () =>{
-       dispatch(getdata())
-    }
-   useEffect(() =>{
-      DataProduct()
-   },[])
 
-   if(!isAuth){
- return <Navigate  to={'/login'}/>
-   }
+
+   const DataProduct = () =>{
+    
+    dispatch(getdata())
+ }
+
+   useEffect(() =>{
+    DataProduct()
+ },[])
+
+ if(!isAuth || token===""){
+  return <Navigate  to={'/login'}/>
+    }
+  
+    
+    
+  
+  
 console.log(product)
   return (
     <>

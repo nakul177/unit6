@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import {sign_loding ,sign_err ,sign_success} from "../Redux/Signup/action"
 import {useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
+import axios from 'axios'
 export const Sign = () => {
-  const [name , setName] = useState('')
+  const [username , setName] = useState('')
   const [email , setEmail] = useState('')
   const [password , setPassword] = useState('')
   const dispatch = useDispatch()
@@ -11,34 +12,27 @@ export const Sign = () => {
 
  const handleSubmit = () =>{
    const userregdata = {
-    name,
+    username,
     email,
     password
   } 
   
-  dispatch(sign_loding())
- 
-  fetch(`https://reqres.in/api/register` , {
-    method:"POST",
-    body:JSON.stringify(userregdata),
-    headers:{"Content-Type":"application/json"}
-  })
-  .then((res) =>{
-    res.json()
-  })
-   .then((res) =>{
-    dispatch(sign_success(res.token))
-    alert("Sign Successful")
-    navigate("/login")
-  }).catch((res) =>{
-    dispatch(sign_err())
-  })
-  
+
+  dispatch(sign_loding());
+  axios
+    .post("https://authmyapp.herokuapp.com/register", userregdata )
+    .then((res) => {
+      dispatch(sign_success(res.token));
+      navigate("/login")
+    })
+    .catch((err) => {
+      dispatch(sign_err())
+    });
  }
 
   return (
     <div>
-      <input type="text" placeholder='name' value={name}  onChange={(e) =>{
+      <input type="text" placeholder='name' value={username}  onChange={(e) =>{
         setName(e.target.value)
       }}/>
       <input type="text" placeholder='email' value={email}  onChange={(e) =>{
