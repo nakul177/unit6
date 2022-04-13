@@ -5,7 +5,7 @@ import {getdata} from "../Redux/Rest/action"
 import './Rest.css'
 export const Rest = () => {
 
-   const {token , isAuth} = useSelector((state) => state.login)
+  
    
    const {product} = useSelector((state) => state.rest)
    const dispatch = useDispatch()
@@ -20,9 +20,7 @@ export const Rest = () => {
     DataProduct()
  },[])
 
- if(!isAuth || token===""){
-  return <Navigate  to={'/login'}/>
-    }
+
   
     
     
