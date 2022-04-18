@@ -8,7 +8,6 @@ const Div = styled.div`
 
 export const Profile = ({token , username}) => {
     const [profile , setProfile] = useState({})
-console.log(token,username)
 useEffect(() =>{
 fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`,{
   method:"GET",
