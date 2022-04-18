@@ -7,7 +7,7 @@ import { TodoCoutainer } from "./TodoCoutainer";
 import { getTodo } from "../Redux/Todo/action";
 
 const Contanier = styled.div`
-  margin: 100px;
+  margin: 80px;
   margin-top: 20px;
   padding: 0;
   display: grid;

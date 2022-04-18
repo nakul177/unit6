@@ -1,8 +1,33 @@
 import React, { useReducer, useState } from "react";
 import { v4 as uuid } from "uuid";
-import {useDispatch} from 'react-redux'
+import {useDispatch , useSelector} from 'react-redux'
 import {getTodo}   from "../Redux/Todo/action.js"
 import axios from "axios";
+import styled from "styled-components";
+import { SideBar } from "./SideBar.jsx";
+
+
+const Contanier = styled.div`
+  margin: 100px;
+  margin-top: 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  height: 90vh;
+  gap: 20px;
+`;
+const Box1 = styled.div`
+  grid-column: 1/5;
+
+  border: 2px black solid;
+`;
+const Box2 = styled.div`
+
+  grid-column: 5/12;
+  border: 2px black solid;
+  padding: 20px;
+`;
+
 const initstate = {
   title: "",
   description: "",
@@ -46,7 +71,8 @@ const reducer = (state, { type, payload }) => {
 export const TodoCreate = () => {
   const [state, dispatch] = useReducer(reducer, initstate);
   const [subtaskInput, setsubtaskInput] = useState("");
-
+  const { token, username } = useSelector((state) => state.login);
+  const { todos } = useSelector((state) => state.todos);
   const reduxDisptach = useDispatch()
    const createNewTask = () =>{
      const payload = {
@@ -61,7 +87,11 @@ export const TodoCreate = () => {
   const { official, personal, others } = tags;
 
   return (
-    <div>
+    <Contanier>
+      <Box1>
+     <SideBar token={token} username={username} todos={todos} /> 
+      </Box1>
+      <Box2>
       <input
         type=" text"
         placeholder="title"
@@ -213,6 +243,7 @@ export const TodoCreate = () => {
       </div>
       </div>
       <button onClick={()=>createNewTask()}>CREATE TASK</button>
-    </div>
+      </Box2>
+    </Contanier>
   );
 };

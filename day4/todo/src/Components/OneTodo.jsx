@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getTodo } from "../Redux/Todo/action.js";
+import { useNavigate } from "react-router";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -19,7 +20,8 @@ const Header = styled.div`
 const Subtask = styled.div``;
 
 export const OneTodo = (props) => {
-  const disptach = useDispatch;
+  const disptach = useDispatch();
+  const navigate = useNavigate()
   const { title, description, subtasks, status, tags, date , id} = props;
   const { official, personal, others } = tags;
  
@@ -69,6 +71,7 @@ export const OneTodo = (props) => {
             </div>
           ))}
         </Subtask>
+        <button onClick={() => navigate(`/todo/${id}/edit`)}>EDIT</button>
       </Wrapper>
       <hr />
     </>
