@@ -1,0 +1,46 @@
+Explain in brief what is node js?
+:- Node. js (Node) is an open source development platform for executing JavaScript code server-side. Node is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news feeds and web push notifications.
+
+How is node js non-blocking?
+Non-Blocking: It refers to the program that does not block the execution of further operations. Non-Blocking methods are executed asynchronously. Asynchronously means that the program may not necessarily execute line by line. The program calls the function and move to the next operation and does not wait for it to return.
+
+What is throughput?
+:-Throughput is a measure of how many units of information a system can process in a given amount of time.
+
+How is Node js having high IO throughput?
+:-Node.js is asynchronous and single-threaded. This means that all I/O operations don’t block any other operations. It also means that you can send emails, read files, query the database, etc. all at the same time.
+Each request to the web-server won’t create a separate Node.js process. Although, one Node.js process would run at all times which would listen to the connections. JavaScript code is also executed in the process’ main thread while all other I/O operations are executed in separate threads which results in almost no delays.
+The virtual machine in Node.js (V8) which is responsible for executing JavaScript consists of a JIT compilation. The virtual machine can take the source code to compile it into the machine code at runtime. What it means is that all the “hot” functions that get called often than not can be compiled to the machine code thus boosting the execution speed.
+
+What are CPU intensive tasks?
+:-So what are CPU Intensive tasks? They are complex user actions that eat up more RAM. A few of such processes can shut down your server entirely. Naturally, you want to make sure that your app or website is 'smart' enough to handle different kinds of tasks, for each individual user request
+
+How can you end up blocking your main thread in node.js?
+:-In traditional programming languages ​​like C and PHP, all of the instructions are blocked by default unless you explicitly “enable” it to perform asynchronous operations
+
+What is the event loop?
+:-JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks.
+
+What are different phases in event loop?
+:-The Event Loop contains six main phases: timers, I/O callbacks, preparation / idle phase, I/O polling, setImmediate() callbacks execution, and close events callbacks
+
+What is process.tick?
+:-When in Node JS, one iteration of the event loop is completed. This is known as a tick. process. nextTick() taking a callback function which is executed after completing the current iteration/tick of the event loop.
+
+When can process.tick starve your event loop?
+:- by making recursive process.nextTick() calls, which prevents the event loop from reaching the poll phase.
+
+What is the difference between setTimeout and setInterval?
+:-The only difference is , setTimeout() triggers the expression only once while setInterval() keeps triggering expression regularly after the given interval of time.
+
+How can you make a network request with http module from the backend?
+:-Axios is a very popular promise-based request library. It is an HTTP client available for both browser and Node.js. It also includes handy features like intercepting request and response data, and the ability to automatically transform request and response data to JSON.
+
+How can you create your own events?
+:-Node. js allows us to create and handle custom events easily by using events module. Event module includes EventEmitter class which can be used to raise and handle custom events.
+
+What are clusters?
+:-A database cluster is a collection of databases that is managed by a single instance of a running database server
+
+How does your Node.js application handle scale? Elaborate
+:-calability in Node.js is not an afterthought. It’s something that’s baked into the core of the runtime. Node is named Node to emphasize the idea that a Node application should comprise multiple small distributed nodes that communicate with each other.
